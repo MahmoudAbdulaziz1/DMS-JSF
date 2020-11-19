@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+	overflow: hidden;
+    padding: 45px 10px;
+	background: #e6f7ff;
+}

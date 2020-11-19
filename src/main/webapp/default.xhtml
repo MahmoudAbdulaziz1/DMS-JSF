@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+<link rel="stylesheet" type="text/css" href="css/home.css" />
+<link type="text/css" rel="stylesheet"
+	href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-dark-hive" />
+<h:outputStylesheet library="webjars"
+	name="font-awesome/5.12.0/css/all.min-jsf.css" />
+<h:outputStylesheet library="webjars"
+	name="font-awesome/5.12.0/css/v4-shims.min-jsf.css" />
+<h:body>
+	<!-- 	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="50">
+			<ui:include src="north.xhtml" />
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="100">
+			<ui:include src="south.xhtml" />
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="300">
+			<h:outputText value="Left content" />
+		</p:layoutUnit>
+		<p:layoutUnit position="east" size="200">
+			<h:outputText value="Right Content" />
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<ui:include src="center.xhtml" />
+		</p:layoutUnit>
+	</p:layout> -->
+
+	<div>
+		<div class="header"></div>
+	</div>
+	<div>
+		<h:form>
+			<p:commandButton id="iconOnly" style="margin-right:20px;"
+				icon="ui-menuitem-icon ui-icon fa fa-plus" type="button"
+				onclick="PF('addEmployee').show();" />
+			<br/>
+			<p:dataTable var="emp" value="#{employeeService.getEmployees()}" rows="10"
+				paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Employee code">
+					<p:inputText value="#{emp.id}" />
+				</p:column>
+
+				<p:column headerText="Employee Name">
+					<p:inputText value="#{emp.name}" />
+				</p:column>
+				<p:column headerText="Employee Address">
+					<p:inputText value="#{emp.id}" />
+				</p:column>
+
+				<p:column headerText="Mail Address">
+					<p:inputText value="#{emp.name}" />
+				</p:column>
+				<p:column headerText="">
+					<p:commandButton value="Edit"></p:commandButton>
+				</p:column>
+
+				
+
+			</p:dataTable>
+
+
+			<p:dialog header="add new Employee" widgetVar="addEmployee"
+				modal="true" height="100">
+				<table>
+					<tr>
+						<td><p:outputLabel value="Employee Name"></p:outputLabel></td>
+						<td><p:inputText value="#{employee.name}" placeholder="enter employee name" /></td>
+						<td><p:outputLabel value="Employee Name"></p:outputLabel></td>
+						<td><p:inputText value="#{employee.code}" placeholder="enteremployee code" /></td>
+					</tr>
+					<tr>
+						<td colspan="4" style="text-align: center;"><p:commandButton
+								value="save" action="#{employeeService.create(employee)}"></p:commandButton></td>
+					</tr>
+				</table>
+			</p:dialog>
+
+		</h:form>
+	</div>
+
+</h:body>
+</html>
